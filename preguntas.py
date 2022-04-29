@@ -46,7 +46,6 @@ def pregunta_02():
     """
     from collections import Counter
     from operator import itemgetter
-    
     file_csv= open("data.csv", "r").readlines()
     file_csv = [z.replace("\n", "") for z in file_csv]
     file_csv = [z.split("\t") for z in file_csv]
