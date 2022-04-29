@@ -21,12 +21,13 @@ def pregunta_01():
     214
 
     """
-    x= open("data.csv", "r").readlines()
-    x = [z.replace("\n", "") for z in x]
-    x = [z.split("\t") for z in x]
-    x = [int(z[1]) for z in x]
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    x = [int(z[1]) for z in file_csv]
     x = sum(x)
     return x
+
 
 def pregunta_02():
     """
