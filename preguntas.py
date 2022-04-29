@@ -114,7 +114,16 @@ def pregunta_04():
     ]
 
     """
-    return
+    from collections import Counter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    n=[z[2].split("-") for z in file_csv]
+    n=[z[1] for z in n]
+    n=Counter(n).most_common(12)
+    n.sort()
+    return n
 
 
 def pregunta_05():
