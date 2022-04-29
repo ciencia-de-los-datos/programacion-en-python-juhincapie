@@ -44,7 +44,16 @@ def pregunta_02():
     ]
 
     """
-    return
+    from collections import Counter
+    from operator import itemgetter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    y= [z[0] for z in file_csv]
+    y=Counter(y).most_common(30)
+    y.sort(key=itemgetter(0))
+    return y
 
 
 def pregunta_03():
