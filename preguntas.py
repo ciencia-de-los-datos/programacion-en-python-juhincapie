@@ -137,7 +137,21 @@ def pregunta_05():
     ]
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[:2] for z in file_csv]
+    
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,max(valor),min(valor)) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_06():
