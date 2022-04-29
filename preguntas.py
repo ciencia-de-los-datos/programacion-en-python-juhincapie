@@ -329,7 +329,12 @@ def pregunta_10():
 
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [(z[0],z[3].split(","),z[4].split(",")) for z in file_csv]
+    file_csv = [(z[0],z[1].index((z[1][-1]))+1,z[2].index((z[2][-1]))+1) for z in file_csv]
+    return file_csv
 
 
 def pregunta_11():
