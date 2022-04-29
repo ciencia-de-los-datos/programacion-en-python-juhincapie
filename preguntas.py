@@ -294,7 +294,21 @@ def pregunta_09():
     }
 
     """
-    return
+    from collections import Counter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[4] for z in file_csv]
+    
+    file_csv = [z.split(",") for z in file_csv ]
+    file_csv = [m.split(",") for z in file_csv for m in z]
+    file_csv = [m.split(":")[0] for z in file_csv for m in z]
+    
+    file_csv=Counter(file_csv).most_common(30)
+    file_csv.sort()
+    file_csv=dict(file_csv)
+    return file_csv
 
 
 def pregunta_10():
