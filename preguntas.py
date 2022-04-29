@@ -71,25 +71,21 @@ def pregunta_03():
     ]
 
     """
-    from collections import defaultdict
-    
     file_csv= open("data.csv", "r").readlines()
     file_csv = [z.replace("\n", "") for z in file_csv]
     file_csv = [z.split("\t") for z in file_csv]
-    y= [(z[0],int(z[1])) for z in file_csv]
+    file_csv = [z[:2] for z in file_csv]
     
-    d = defaultdict(list)
-    for k, v in y:
-        d[k].append(v)
-    m=sorted(d.items())
-
-    s = defaultdict(list)
-    for j,b in m:
-        s[j,sum(b)]
-    p=sorted(s.items())
-
-    h=[q for q,w in p]
-    return h
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,sum(valor)) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_04():
