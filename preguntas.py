@@ -21,7 +21,12 @@ def pregunta_01():
     214
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    x = [int(z[1]) for z in file_csv]
+    x = sum(x)
+    return x
 
 
 def pregunta_02():
@@ -39,7 +44,16 @@ def pregunta_02():
     ]
 
     """
-    return
+    from collections import Counter
+    from operator import itemgetter
+
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    y= [z[0] for z in file_csv]
+    y=Counter(y).most_common(30)
+    y.sort(key=itemgetter(0))
+    return y
 
 
 def pregunta_03():
@@ -57,7 +71,21 @@ def pregunta_03():
     ]
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[:2] for z in file_csv]
+    
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,sum(valor)) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_04():
@@ -82,7 +110,16 @@ def pregunta_04():
     ]
 
     """
-    return
+    from collections import Counter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    n=[z[2].split("-") for z in file_csv]
+    n=[z[1] for z in n]
+    n=Counter(n).most_common(12)
+    n.sort()
+    return n
 
 
 def pregunta_05():
@@ -100,7 +137,21 @@ def pregunta_05():
     ]
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[:2] for z in file_csv]
+    
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,max(valor),min(valor)) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_06():
@@ -125,7 +176,25 @@ def pregunta_06():
     ]
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[4] for z in file_csv]
+    
+    file_csv = [z.split(",") for z in file_csv ]
+    file_csv = [m.split(",") for z in file_csv for m in z]
+    file_csv = [m.split(":") for z in file_csv for m in z]
+    
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,min(valor),max(valor)) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_07():
@@ -149,7 +218,21 @@ def pregunta_07():
     ]
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[:2] for z in file_csv]
+    
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if valor in result.keys():
+            result[valor].append(letra)
+        else:
+            result[valor]=[letra]
+    result=[(key,valor) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_08():
@@ -174,7 +257,21 @@ def pregunta_08():
     ]
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[:2] for z in file_csv]
+    
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if valor in result.keys():
+            result[valor].append(letra)
+        else:
+            result[valor]=[letra]
+    result=[(key,sorted(set(valor))) for key, valor in result.items()]
+    result.sort()
+    return result
 
 
 def pregunta_09():
@@ -197,7 +294,21 @@ def pregunta_09():
     }
 
     """
-    return
+    from collections import Counter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [z[4] for z in file_csv]
+    
+    file_csv = [z.split(",") for z in file_csv ]
+    file_csv = [m.split(",") for z in file_csv for m in z]
+    file_csv = [m.split(":")[0] for z in file_csv for m in z]
+    
+    file_csv=Counter(file_csv).most_common(30)
+    file_csv.sort()
+    file_csv=dict(file_csv)
+    return file_csv
 
 
 def pregunta_10():
@@ -218,7 +329,12 @@ def pregunta_10():
 
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [(z[0],z[3].split(","),z[4].split(",")) for z in file_csv]
+    file_csv = [(z[0],z[1].index((z[1][-1]))+1,z[2].index((z[2][-1]))+1) for z in file_csv]
+    return file_csv
 
 
 def pregunta_11():
@@ -239,7 +355,20 @@ def pregunta_11():
 
 
     """
-    return
+    from collections import Counter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [(z[3].split(",")*int(z[1])) for z in file_csv]
+    p=[]
+    for lista in file_csv:
+        p+=lista
+    #result=p.copy()
+    result=Counter(p).most_common(30)
+    result.sort()
+    result=dict(result)
+    return result
 
 
 def pregunta_12():
@@ -257,4 +386,21 @@ def pregunta_12():
     }
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [(z[0],z[4]) for z in file_csv]
+    file_csv = [(z[0],z[1].split(",")) for z in file_csv]
+    file_csv = [(z ,int(m.split(":")[1])) for z,y in file_csv for m in y]
+
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,sum(valor)) for key, valor in result.items()]
+    result.sort()
+    result=dict(result)
+    return result
