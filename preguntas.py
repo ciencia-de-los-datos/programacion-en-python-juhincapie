@@ -355,7 +355,20 @@ def pregunta_11():
 
 
     """
-    return
+    from collections import Counter
+    
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [(z[3].split(",")*int(z[1])) for z in file_csv]
+    p=[]
+    for lista in file_csv:
+        p+=lista
+    #result=p.copy()
+    result=Counter(p).most_common(30)
+    result.sort()
+    result=dict(result)
+    return result
 
 
 def pregunta_12():
