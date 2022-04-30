@@ -386,4 +386,21 @@ def pregunta_12():
     }
 
     """
-    return
+    file_csv= open("data.csv", "r").readlines()
+    file_csv = [z.replace("\n", "") for z in file_csv]
+    file_csv = [z.split("\t") for z in file_csv]
+    file_csv = [(z[0],z[4]) for z in file_csv]
+    file_csv = [(z[0],z[1].split(",")) for z in file_csv]
+    file_csv = [(z ,int(m.split(":")[1])) for z,y in file_csv for m in y]
+
+    result={}
+    for letra,valor in file_csv:
+        valor=int(valor)
+        if letra in result.keys():
+            result[letra].append(valor)
+        else:
+            result[letra]=[valor]
+    result=[(key,sum(valor)) for key, valor in result.items()]
+    result.sort()
+    result=dict(result)
+    return result
